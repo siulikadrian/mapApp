@@ -1,0 +1,46 @@
+<section data-ng-controller="MapsController">
+  <form name="mapForm" class="form-horizontal col-md-6" role="form" data-ng-submit="create(mapForm.$valid)" novalidate>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && mapForm.info.$invalid }">
+      <label mean-token="'create-title'" class="col-md-3 control-label">Info</label>
+      <div class="col-md-9">
+        <input name="info" type="text" class="form-control" data-ng-model="info" id="info" placeholder="info" required>
+        <div ng-show="submitted && mapForm.info.$invalid" class="help-block">
+          <p ng-show="mapForm.info.$error.required">Title is required</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && mapForm.desc.$invalid }">
+      <label mean-token="'create-desc'" for="desc" class="col-md-3 control-label">Content</label>
+      <div class="col-md-9">
+        <textarea name="desc" data-ng-model="desc" id="desc" cols="30" rows="10" placeholder="desc" class="form-control" required></textarea>
+        <div ng-show="submitted && mapForm.desc.$invalid" class="help-block">
+          <p ng-show="mapForm.desc.$error.required">desc is required</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && mapForm.lat.$invalid }">
+      <label mean-token="'create-lat'" class="col-md-3 control-label">LAT</label>
+      <div class="col-md-9">
+        <input name="lat" type="text" class="form-control" data-ng-model="lat" id="lat" placeholder="LAT" required>
+        <div ng-show="submitted && mapForm.lat.$invalid" class="help-block">
+          <p ng-show="mapForm.lat.$error.required">Lat is required</p>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : submitted && mapForm.lan.$invalid }">
+      <label mean-token="'create-lan'" class="col-md-3 control-label">LAN</label>
+      <div class="col-md-9">
+        <input name="lan" type="text" class="form-control" data-ng-model="lan" id="lan" placeholder="LAN" required>
+        <div ng-show="submitted && mapForm.lan.$invalid" class="help-block">
+          <p ng-show="mapForm.lan.$error.required">Lan is required</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <div class="col-md-offset-3 col-md-9">
+        <button type="submit" class="btn btn-info">Dodaj Marker</button>
+      </div>
+    </div>
+  </form>
+</section>

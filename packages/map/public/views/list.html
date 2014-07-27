@@ -1,0 +1,31 @@
+
+
+<section data-ng-controller="MapsController" data-ng-init="find()">
+  <div class="search">
+      <input ng-model="query" class="form-control" type="text" placeholder="Szukaj"/>
+  </div>
+  <ul class="map-list" ng-scrollbar rebuild-on="rebuild:me">
+    <li data-ng-repeat="map in maps | filter: query" marker-id="{{map._id}}">
+      <span>{{map.user.name}}</span>
+      <h2>
+        <a data-ng-href="#!/map/{{map._id}}">{{map.info}}</a>
+        <span data-ng-if="hasAuthorization(map)">
+          <a class="btn" href="/#!/map/{{map._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="remove(map);refresh();">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </span>
+      </h2>
+      <div>{{map.desc}}</div>
+    </li>
+  </ul>
+
+  <div class="map-wrapper" style="height: 600px; width: 100%;">
+     <map zoom="9"  scrollwheel="false" zoom-control="false" center="[52, 21]" style="width: 100%; height: 100%;">
+        <marker ng-repeat="map in maps | filter: query" on-mouseover="hoverFunction()" on-mouseout="resetHover()" marker-id="{{map._id}}" position="[{{map.lat}},{{map.lan}}]"></marker>
+     </map>
+  </div>
+
+</section>
